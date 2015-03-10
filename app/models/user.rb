@@ -15,14 +15,16 @@ class User < ActiveRecord::Base
     :contacts,
     primary_key: :id,
     foreign_key: :user_id,
-    class_name: 'Contact'
+    class_name: 'Contact',
+    dependent: :destroy
   )
 
   has_many(
     :contact_shares,
     primary_key: :id,
     foreign_key: :user_id,
-    class_name: 'ContactShare'
+    class_name: 'ContactShare',
+    dependent: :destroy
   )
 
   has_many(
